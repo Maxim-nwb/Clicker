@@ -5,9 +5,8 @@ class MainWindow(Frame):
         Frame.__init__(self, parent)   
         self.parent = parent
         self.parent.title("Cliker")
-        self.parent.geometry("250x250+300+300")
-        self.parent.minsize(width = 150, height = 150)
-        self.parent.maxsize(width = 250, height = 250)
+        self.parent.geometry("150x150+300+300")
+        self.parent.resizable(width=False, height=False)
         self.create_widgets()
     
     def create_widgets(self):
@@ -23,3 +22,5 @@ class MainWindow(Frame):
         self.count_keystrokes.grid(row = 2, column = 1)
         self.label_keystrokes = Label(self.parent, text = "Keystrokes: ")
         self.label_keystrokes.grid(row = 2, column = 0, sticky = W)
+        self.stat_button = Button(self.parent, text = "Detailed statistics")
+        self.stat_button. grid(row = 3, column = 0)
