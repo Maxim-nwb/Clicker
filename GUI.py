@@ -29,14 +29,16 @@ class MainWindow(Frame):
         self.stat_button. grid(row = 3, column = 0)
         # attribute for saving statistics
         self.statistic = dict()
-    # show detailed information
-    def onInfo(self):
+    # creating a report
+    def create_report(self):
         # adding the total number of actions
         self.statistic["Total Cliks"] = self.count_cliks.cget("text")
         self.statistic["Total Keystrokes"] = self.count_keystrokes.cget("text")
-        # creating a report
         info = ""
-        for i in sorted(self.statistic.keys()):
+        for i in sorted(self.statistic.keys(), key = len, reverse = True):
             info += " {0} = {1} \n".format(i, self.statistic[i])
+        return info
 
-        messagebox.showinfo("Detailed statistics", "{0}".format(info))
+    # show detailed information
+    def onInfo(self):
+        messagebox.showinfo("Detailed statistics", "{0}".format(self.create_report()))
