@@ -5,13 +5,18 @@ import mouse
 # variables for storing the number of actions
 cliks = 0
 keystrokes = 0
+# function for saving an action
+def set_action(action, stat):
+    stat.statistic[action] = stat.statistic.get(action, 0) + 1
 # function for counting actions
+
 def pressed(action, window):
     # checking the type to determine
     if isinstance(action, keyboard.KeyboardEvent):
         global keystrokes
         keystrokes += 1
         window.count_keystrokes.config(text="{0}".format(keystrokes))
+        set_action(action.name, window)
     elif action == "c":
         global cliks
         cliks += 1
