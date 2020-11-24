@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from tkinter import filedialog
+from Save_Statistics import save
 
 class MainWindow(Frame):
     def __init__(self, parent):
@@ -46,7 +46,6 @@ class MainWindow(Frame):
     # show detailed information
     def onInfo(self):
         messagebox.showinfo("Detailed statistics", "{0}".format(self.create_report()))
-
+    # save as file
     def save_file(self):
-        a =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("CSV files","*.csv"),("all files","*.*")))
-        a
+        save(self.create_report().split("\n"))
