@@ -26,9 +26,12 @@ class MainWindow(Frame):
         self.label_keystrokes.grid(row = 2, column = 0, sticky = W)
         # display button detailed statistics
         self.stat_button = Button(self.parent, text = "Detailed statistics", command = self.onInfo)
-        self.stat_button. grid(row = 3, column = 0)
+        self.stat_button. grid(row = 3, column = 0, sticky = W)
         # attribute for saving statistics
         self.statistic = dict()
+        # button for saving statistics
+        self.save_stat_button = Button(self.parent, text = "Save statistics")
+        self.save_stat_button. grid(row = 4, column = 0, sticky = W)
     # creating a report
     def create_report(self):
         # adding the total number of actions
