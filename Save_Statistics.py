@@ -20,3 +20,7 @@ def save(stat):
         with open(filepath, "w", newline='') as txt_file:
             for i in stat:
                 txt_file.write(i+'\n')
+    else:
+        with open(filepath, "w", newline='') as some_file:
+            for i in stat:
+                some_file.write(i+'\n')
