@@ -9,6 +9,7 @@ class MainWindow(Frame):
         self.parent.title("Cliker")
         self.parent.geometry("150x150+300+300")
         self.parent.resizable(width=False, height=False)
+        self.parent.iconbitmap('tap.ico')
         self.create_widgets()
 
     def create_widgets(self):
