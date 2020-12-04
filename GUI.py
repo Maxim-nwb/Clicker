@@ -34,6 +34,9 @@ class MainWindow(Frame):
         # button for saving statistics
         self.save_stat_button = Button(self.parent, text = "Save statistics", command = self.save_file)
         self.save_stat_button. grid(row = 4, column = 0, sticky = W)
+        # button for mininmize to tray
+        self.save_stat_button = Button(self.parent, text = "Minimize to tray", command = self.tray)
+        self.save_stat_button. grid(row = 4, column = 1, sticky = W)
     # creating a report
     def create_report(self):
         # adding the total number of actions
@@ -50,3 +53,6 @@ class MainWindow(Frame):
     # save as file
     def save_file(self):
         save(self.create_report().split("\n"))
+    # mininmize to tray
+    def tray(self):
+        self.parent.withdraw()
