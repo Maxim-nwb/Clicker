@@ -1,13 +1,14 @@
 from tkinter import *
 from tkinter import messagebox
 from Save_Statistics import save
+from Tray import Tray
 
 class MainWindow(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent)   
         self.parent = parent
         self.parent.title("Cliker")
-        self.parent.geometry("150x150+300+300")
+        self.parent.geometry("210x150+300+300")
         self.parent.resizable(width=False, height=False)
         self.parent.iconbitmap('tap.ico')
         self.create_widgets()
@@ -36,7 +37,7 @@ class MainWindow(Frame):
         self.save_stat_button. grid(row = 4, column = 0, sticky = W)
         # button for mininmize to tray
         self.save_stat_button = Button(self.parent, text = "Minimize to tray", command = self.tray)
-        self.save_stat_button. grid(row = 4, column = 1, sticky = W)
+        self.save_stat_button. grid(row = 3, column = 2, sticky = W)
     # creating a report
     def create_report(self):
         # adding the total number of actions
@@ -55,4 +56,8 @@ class MainWindow(Frame):
         save(self.create_report().split("\n"))
     # mininmize to tray
     def tray(self):
+        # hiding the main window
         self.parent.withdraw()
+        # create tray
+        tray = Tray()
+        tray.run()
