@@ -56,8 +56,12 @@ class MainWindow(Frame):
         save(self.create_report().split("\n"))
     # mininmize to tray
     def tray(self):
-        # hiding the main window
-        self.parent.withdraw()
         # create tray
         tray = Tray()
-        tray.run()
+        # hiding the main window
+        self.parent.withdraw()
+        while tray._status == True:
+            # run tray
+            tray.run()
+        # return main window
+        self.parent.deiconify()
