@@ -12,6 +12,7 @@ class MainWindow(Frame):
         self.parent.geometry("225x150+300+300")
         self.parent.resizable(width=False, height=False)
         self.parent.iconbitmap('tap.ico')
+        self.parent.protocol('WM_DELETE_WINDOW', self.close_app)
         self.create_widgets()
 
     def create_widgets(self):
@@ -37,7 +38,7 @@ class MainWindow(Frame):
         self.save_stat_button = Button(self.parent, text = "Save statistics", command = self.save_file, bg = "#E0FFFF")
         self.save_stat_button. grid(row = 4, column = 0, sticky = W)
         # button for mininmize to tray
-        self.save_stat_button = Button(self.parent, text = "Minimize to tray", command = self.tray, bg = "#E0FFFF")
+        self.save_stat_button = Button(self.parent, text = "Minimize to tray", command = self.minimize_tray, bg = "#E0FFFF")
         self.save_stat_button. grid(row = 3, column = 2, sticky = W)
     # creating a report
     def create_report(self):
@@ -55,8 +56,8 @@ class MainWindow(Frame):
     # save as file
     def save_file(self):
         save(self.create_report().split("\n"))
-    # mininmize to tray
-    def tray(self):
+    # minimize to tray
+    def minimize_tray(self):
         # create tray
         tray = Tray()
         # hiding the main window
@@ -66,3 +67,8 @@ class MainWindow(Frame):
             tray.run()
         # return main window
         self.parent.deiconify()
+    # ask about saving when exit
+    def close_app(self):
+        save_ansver = messagebox.askyesno("Save data", "Save detailed statistics?")
+        if save_ansver:
+            self.save_file()
