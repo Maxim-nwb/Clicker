@@ -76,3 +76,5 @@ class MainWindow(Frame):
         save_ansver = messagebox.askyesno("Save data", "Save detailed statistics?")
         if save_ansver:
             self.save_file()
+        self.parent.destroy()
+
