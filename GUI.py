@@ -55,7 +55,11 @@ class MainWindow(Frame):
         messagebox.showinfo("Detailed statistics", "{0}".format(self.create_report()))
     # save as file
     def save_file(self):
-        save(self.create_report().split("\n"))
+        # handling a save error
+        try:
+            save(self.create_report().split("\n"))
+        except FileNotFoundError:
+            pass
     # minimize to tray
     def minimize_tray(self):
         # create tray
