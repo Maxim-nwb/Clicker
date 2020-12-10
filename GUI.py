@@ -62,13 +62,19 @@ class MainWindow(Frame):
             pass
     # minimize to tray
     def minimize_tray(self):
-        # create tray
-        tray = Tray()
         # hiding the main window
         self.parent.withdraw()
-        while tray._status == True:
-            # run tray
+        START = True
+        while START:
+            # start tray
+            tray = Tray()
             tray.run()
+            # calling save from a tray
+            if tray._status == "SAVE":
+                self.save_file()
+            # close tray
+            if tray._status == "STOP":
+                START = False
         # return main window
         self.parent.deiconify()
     # ask about saving when exit
