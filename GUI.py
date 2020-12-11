@@ -75,6 +75,10 @@ class MainWindow(Frame):
             # close tray
             if tray._status == "STOP":
                 START = False
+            # close app
+            if tray._status == "CLOSE":
+                self.close_app()
+                exit(0)
         # return main window
         self.parent.deiconify()
     # ask about saving when exit
