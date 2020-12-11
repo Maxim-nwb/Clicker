@@ -71,7 +71,9 @@ class MainWindow(Frame):
             tray.run()
             # calling save from a tray
             if tray._status == "SAVE":
-                self.save_file()
+                save_ansver = messagebox.askyesno("Save data", "Save detailed statistics?")
+                if save_ansver:
+                    self.save_file()
             # close tray
             if tray._status == "STOP":
                 START = False
