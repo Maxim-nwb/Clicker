@@ -81,6 +81,9 @@ class MainWindow(Frame):
             if tray._status == "CLOSE":
                 self.close_app()
                 exit(0)
+            # show statistics 
+            if tray._status == "STATISTICS":
+                self.onInfo()
         # return main window
         self.parent.deiconify()
     # ask about saving when exit
