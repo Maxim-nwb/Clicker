@@ -88,10 +88,14 @@ class MainWindow(Frame):
         self.parent.deiconify()
     # ask about saving when exit
     def close_app(self):
-        save_ansver = messagebox.askyesno("Exit", "Save detailed statistics before exiting?")
-        if save_ansver:
-            self.save_file()
-        else:
-            messagebox.showwarning("Exit", "Exit without saving")
-        self.parent.destroy()
+        exit_ansver = messagebox.askyesno("Exit", "Log out of the app?")
+        if exit_ansver:
+            # asks about saving before exiting
+            save_ansver = messagebox.askyesno("Exit", "Save detailed statistics before exiting?")
+            if save_ansver:
+                self.save_file()
+            else:
+                messagebox.showwarning("Exit", "Exit without saving")
+            self.parent.destroy()
+        else: pass
 
