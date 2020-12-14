@@ -23,12 +23,15 @@ def pressed(action, window):
         window.count_cliks.config(text="{0}".format(cliks))
 
 # main loop
-window = GUI.Tk()
-my_gui = GUI.MainWindow(window)
-keyboard.on_press(lambda x: pressed(x, my_gui))
-mouse.on_button(callback = pressed, args=("c", my_gui), buttons=('left', 'middle', 'right'), types=('down', 'double'))
-window.mainloop()
+def main():
+    window = GUI.Tk()
+    my_gui = GUI.MainWindow(window)
+    keyboard.on_press(lambda x: pressed(x, my_gui))
+    mouse.on_button(callback = pressed, args=("c", my_gui), buttons=('left', 'middle', 'right'), types=('down', 'double'))
+    window.mainloop()
 
+if __name__ == "__main__":
+    main()
 
 
 
