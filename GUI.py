@@ -57,7 +57,11 @@ class MainWindow(Frame):
     def save_file(self):
         # handling a save error
         try:
-            save(self.create_report().split("\n"))
+            save_ansver = messagebox.askyesno("Save data", "Save detailed statistics?")
+            if save_ansver:
+                save(self.create_report().split("\n"))
+            else:
+                pass
         except FileNotFoundError:
             pass
     # minimize to tray
@@ -71,9 +75,7 @@ class MainWindow(Frame):
             tray.run()
             # calling save from a tray
             if tray._status == "SAVE":
-                save_ansver = messagebox.askyesno("Save data", "Save detailed statistics?")
-                if save_ansver:
-                    self.save_file()
+                self.save_file()
             # close tray
             if tray._status == "STOP":
                 START = False
